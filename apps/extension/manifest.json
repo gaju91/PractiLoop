@@ -1,0 +1,31 @@
+{
+    "manifest_version": 3,
+    "name": "Learning Companion",
+    "version": "0.1.0",
+    "description": "Voice-enabled AI learning companion for online course platforms.",
+    "permissions": [
+        "storage",
+        "activeTab"
+    ],
+    "host_permissions": [
+        "https://www.udemy.com/*"
+    ],
+    "background": {
+        "service_worker": "dist/background/index.js",
+        "type": "module"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.udemy.com/course/*"
+            ],
+            "js": [
+                "dist/content/index.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "action": {
+        "default_title": "Learning Companion"
+    }
+}
