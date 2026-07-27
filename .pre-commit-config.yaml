@@ -1,0 +1,21 @@
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.5.0
+    hooks:
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+
+  - repo: local
+    hooks:
+      - id: typecheck-extension
+        name: TypeScript Check (apps/extension)
+        entry: pnpm --filter @practiloop/extension exec tsc --noEmit
+        language: system
+        pass_filenames: false
+
+      - id: pytest-api
+        name: Pytest Suite (apps/api)
+        entry: uv run --directory apps/api pytest
+        language: system
+        pass_filenames: false

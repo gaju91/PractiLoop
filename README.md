@@ -24,3 +24,34 @@
 * **`packages/contracts`**: Shared TypeScript types, API contracts, and runtime messaging protocols.
 * **`docs/`**: Architectural Decision Records (ADR), design specs, and mentorship guides.
 
+---
+
+## ⚡ Developer Commands (Shortcuts)
+
+We provide short `make` command aliases at the root of the repository so you don't have to type long flags:
+
+| Short Command | What it does | Long Command equivalent |
+|---|---|---|
+| `make dev-api` | Runs FastAPI server with auto-reload | `uv run --directory apps/api uvicorn learning_companion.main:app --reload` |
+| `make dev-ext` | Runs Vite watch mode for extension | `pnpm --filter @practiloop/extension dev` |
+| `make test-api` | Runs backend pytest suite | `uv run --directory apps/api pytest` |
+| `make build-ext` | Builds extension production bundle | `pnpm --filter @practiloop/extension build` |
+| `make check` | Runs typechecks (Python `mypy` + TS `tsc`) | `tsc --noEmit && uv run mypy` |
+| `make lint` | Runs Python linter (`ruff`) | `uv run --directory apps/api ruff check src` |
+| `make help` | Displays all available shortcuts | `make help` |
+
+### Initial Setup
+
+```bash
+# 1. Install Extension dependencies
+pnpm install
+
+# 2. Sync Python Backend dependencies & dev tools
+uv sync --directory apps/api --extra dev
+
+# 3. Test setup
+make test-api
+make build-ext
+```
+
+
