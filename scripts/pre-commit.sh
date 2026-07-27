@@ -9,6 +9,9 @@ uv run --directory apps/api ruff check --fix src
 echo "2/4 Auto-formatting TypeScript Code (Prettier)..."
 pnpm --filter @practiloop/extension exec prettier --write "src/**/*.{ts,tsx,json,css}"
 
+# Re-stage formatted files into current commit
+git add -u
+
 echo "3/4 Type-checking TypeScript Code (tsc)..."
 pnpm --filter @practiloop/extension exec tsc --noEmit
 

@@ -40,3 +40,8 @@ htmlcov/
 .idea/
 *.swp
 *.swo
+
+# Local Agent & Progress Tracking Files
+AGENTS.md
+PROGRESS_TRACKER.md
+
